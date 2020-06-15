@@ -10,8 +10,19 @@ namespace RenamerTool
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
+            string workingPath = @"C:\Users\korom\Desktop\Canon 450D";
+
+            var logger = new Logger(workingPath);
+            var fileReader = new FileReader(workingPath, logger);
+
+            try
+            {
+                fileReader.ReadAllFiles();
+            }
+            finally
+            {
+                logger.WriteLogToFile();
+            }
         }
     }
 }
